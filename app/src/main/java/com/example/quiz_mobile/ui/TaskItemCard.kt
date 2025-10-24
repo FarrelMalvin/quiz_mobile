@@ -17,8 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import com.example.quiz_mobile.model.Task         // <-- Import model Task
-import com.example.quiz_mobile.util.formatTimestamp // <-- Import helper yg sudah kamu buat
+import com.example.quiz_mobile.model.Task
+import com.example.quiz_mobile.util.formatTimestamp
 
 @Composable
 fun TaskItemCard(

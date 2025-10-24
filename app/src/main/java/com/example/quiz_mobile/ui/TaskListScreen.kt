@@ -23,17 +23,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.quiz_mobile.viewmodel.TaskViewModel
-import com.example.quiz_mobile.util.formatTimestamp// <-- DIUBAH
+import com.example.quiz_mobile.util.formatTimestamp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TaskListScreen(
-    viewModel: TaskViewModel = viewModel() // Mengambil instance ViewModel
+    viewModel: TaskViewModel = viewModel()
 ) {
-    // Mengamati list kegiatan dari ViewModel
+
     val tasks by viewModel.tasks.collectAsState()
 
-    // State untuk input teks
     var taskNameInput by remember { mutableStateOf("") }
 
     Scaffold(
@@ -46,7 +45,7 @@ fun TaskListScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // 1. Input Area
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -63,7 +62,7 @@ fun TaskListScreen(
                 Button(
                     onClick = {
                         viewModel.addTask(taskNameInput)
-                        taskNameInput = "" // Kosongkan input setelah ditambah
+                        taskNameInput = ""
                     },
                     modifier = Modifier.padding(start = 8.dp)
                 ) {
@@ -71,15 +70,14 @@ fun TaskListScreen(
                 }
             }
 
-            // 2. List Kegiatan (Menggunakan LazyColumn)
             LazyColumn(
-                modifier = Modifier.weight(1f) // Memenuhi sisa ruang
+                modifier = Modifier.weight(1f)
             ) {
                 items(tasks, key = { it.id }) { task ->
                     TaskItemCard(
                         task = task,
                         onCheckedChange = { isChecked ->
-                            // Panggil fungsi update di ViewModel
+
                             viewModel.updateTaskStatus(task.id, isChecked)
                         }
                     )

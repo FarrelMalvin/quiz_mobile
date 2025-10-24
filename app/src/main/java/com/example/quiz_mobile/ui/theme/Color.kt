@@ -1,4 +1,4 @@
-package com.example.quiz_mobile.ui.theme // <-- Sesuaikan paket
+package com.example.quiz_mobile.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

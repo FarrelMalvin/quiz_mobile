@@ -1,4 +1,4 @@
-package com.example.quiz_mobile.ui.theme // <-- Sesuaikan paket
+package com.example.quiz_mobile.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -15,14 +15,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-// Ini adalah palet warna default untuk Mode Gelap (Dark Mode)
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
     secondary = PurpleGrey80,
     tertiary = Pink80
 )
 
-// Ini adalah palet warna default untuk Mode Terang (Light Mode)
+
 private val LightColorScheme = lightColorScheme(
     primary = Purple40,
     secondary = PurpleGrey40,
@@ -30,9 +29,8 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun Quiz_mobileTheme( // <-- INI NAMA TEMA-MU
+fun Quiz_mobileTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color hanya tersedia di Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
@@ -56,7 +54,7 @@ fun Quiz_mobileTheme( // <-- INI NAMA TEMA-MU
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography, // <-- Menggunakan font dari Type.kt
+        typography = Typography,
         content = content
     )
 }

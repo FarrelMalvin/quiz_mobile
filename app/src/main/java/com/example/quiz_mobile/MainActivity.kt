@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.quiz_mobile.ui.TaskListScreen
-import com.example.quiz_mobile.ui.theme.Quiz_mobileTheme // <-- Sekarang ini BISA ditemukan
+import com.example.quiz_mobile.ui.theme.Quiz_mobileTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

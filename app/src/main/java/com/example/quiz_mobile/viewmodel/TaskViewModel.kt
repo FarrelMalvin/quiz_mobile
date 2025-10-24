@@ -33,13 +33,12 @@ class TaskViewModel : ViewModel() {
             if (snapshot != null) {
                 val taskList = snapshot.documents.mapNotNull { doc ->
                     val task = doc.toObject(Task::class.java)
-                    task?.copy(id = doc.id) // Set ID manual
+                    task?.copy(id = doc.id)
                 }
 
                 _tasks.value = taskList.sortedByDescending { it.timestamp }
 
                 Log.d("TaskViewModel", "Tasks updated: ${taskList.size} items")
-                // Log detail setiap task untuk debugging
                 taskList.forEach { task ->
                     Log.d("TaskViewModel", "Task: id=${task.id}, name=${task.name}, completed=${task.isCompleted}")
                 }
@@ -75,7 +74,7 @@ class TaskViewModel : ViewModel() {
             return
         }
 
-        // OPTIMISTIC UPDATE: Update UI dulu sebelum Firestore selesai
+
         val currentTasks = _tasks.value
         val updatedTasks = currentTasks.map { task ->
             if (task.id == taskId) {
@@ -86,7 +85,7 @@ class TaskViewModel : ViewModel() {
         }
         _tasks.value = updatedTasks.sortedByDescending { it.timestamp }
 
-        // Baru update ke Firestore
+
         viewModelScope.launch {
             tasksCollection.document(taskId)
                 .update("isCompleted", isCompleted)
